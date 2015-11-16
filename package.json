@@ -1,0 +1,32 @@
+{
+  "name": "aiff-file-info",
+  "version": "0.0.0",
+  "description": "AIFF (Audio Interchange File Format) / AIF file information helper",
+  "main": "aif-file-info.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rackfx/Node-AIFF-File-Info.git"
+  },
+  "keywords": [
+    "aiff",
+    "aif",
+    "apple",
+    "info",
+    "data",
+    "file",
+    "size",
+    "bit",
+    "rate",
+    "sample",
+    "rate"
+  ],
+  "author": "David Jones <null@rackfx.com> (rackfx.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rackfx/Node-AIFF-File-Info/issues"
+  },
+  "homepage": "https://github.com/rackfx/Node-AIFF-File-Info"
+}
