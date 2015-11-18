@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/rackfx/Node-AIFF-File-Info/issues"
   },
-  "homepage": "https://github.com/rackfx/Node-AIFF-File-Info"
+  "homepage": "https://github.com/rackfx/Node-AIFF-File-Info",
+  "dependencies": {
+    "buffertools": "^2.1.3"
+  }
 }
