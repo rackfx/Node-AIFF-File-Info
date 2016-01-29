@@ -14,7 +14,7 @@ i=0;
 function go(){
   console.log(i, a[i])
   afi.infoByFilename(a[i], function(err, info){
-    console.log('>',info);
+    console.log('>',err,info);
     i++;
     console.log('------')
     if(i < a.length) go();
