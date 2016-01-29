@@ -1,8 +1,8 @@
 {
   "name": "aiff-file-info",
   "version": "0.0.0",
-  "description": "AIFF (Audio Interchange File Format) / AIF file information helper",
-  "main": "aif-file-info.js",
+  "description": "AIFF (Audio Interchange File Format) / AIFF file information helper",
+  "main": "aiff-file-info.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,11 @@
     "bit",
     "rate",
     "sample",
-    "rate"
+    "rate",
+    "audio",
+    "file",
+    "samplerate"
+    "bits per sample"
   ],
   "author": "David Jones <null@rackfx.com> (rackfx.com)",
   "license": "ISC",
