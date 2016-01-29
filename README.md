@@ -1,6 +1,13 @@
 # Node-AIFF-File-Info
 AIFF (Audio Interchange File Format) / AIF file information helper
 
+https://cycling74.com/forums/topic/aiffs-80-bit-sample-rate-value/
+
+http://www.instructables.com/id/How-to-Read-aiff-Files-using-C/
+
+http://www.muratnkonar.com/aiff/
+
+http://www-mmsp.ece.mcgill.ca/documents/audioformats/aiff/aiff.html
 
 http://aifftools.sourceforge.net/libaiff/#aiff
 

@@ -2,7 +2,7 @@
 var buffertools = require('buffertools');
 var fs = require('fs');
 var afi = {};
-
+console.log('---')
 afi.infoByFilename = function(filename, cb){
   var stats = fs.statSync(filename);
   var buffer = new Buffer(160);
@@ -16,25 +16,23 @@ afi.infoByFilename = function(filename, cb){
       ['chunk_size', 'uinteger', 4],
       ['aiff_identifier', 'string',4],
       ['comm_identifier', 'string', 4],
-      ['what','integer',4],
-      ['hi','integer',4],
-      ['w','integer',4],
-      ['a','integer',4],
-      ['x','integer',4],
-      ['zz','integer',4],
-      ['fda','integer',4],
-      ['h3i','integer',4],
-      ['w3','integer',4],
-      ['a3','integer',4],
-      ['x3','integer',4],
-      ['zz3','integer',4],
-      ['fda3','integer',4],
+      ['chunk_length', 'uinteger', 4],
+
+      ['num_channels', 'uinteger',2],
+      ['num_sample_frames', 'uinteger', 4],
+      ['sample_size','uinteger',2],
+      ['sample_rate1','uinteger',2],
+      ['sample_rate2','uinteger',1],
+      ['sample_rate3','uinteger',1],
+
+
+
     ]
 
-    fs.read(fd,buffer,0,40,0,function(err,num){
+    fs.read(fd,buffer,0,80,0,function(err,num){
       var i=0;
       var pointer = 0;
-      console.log(buffertools.indexOf(buffer,"COMM",0))
+      //console.log(buffertools.indexOf(buffer,"ND",0))
       function read_aif(){
         var read = reads[i];
 
@@ -51,6 +49,10 @@ afi.infoByFilename = function(filename, cb){
           read_result[read[0]] = buffer.readUIntBE(pointer, read[2])
           pointer = pointer + read[2];
         }
+        else if(read[1]=='extendfloat'){
+          read_result[read[0]] = buffer.toString('ascii', pointer , pointer + read[2]);
+          pointer = pointer + read[2];
+        }
         if(i < reads.length) { return read_aif()}
         else { return post_process(); }
 
@@ -59,7 +61,13 @@ afi.infoByFilename = function(filename, cb){
        read_aif();
 
        function post_process(){
-         console.log(read_result);
+         var pad = read_result.sample_rate1 - 16398;
+         var shifted = (read_result.sample_rate2<<8) + read_result.sample_rate3 ;
+         read_result.sample_rate = shifted << pad;
+         read_result.pad = pad;
+         read_result.shifted = shifted;
+
+         console.log(cb(null,read_result));
        }
 
     })

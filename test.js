@@ -1,6 +1,24 @@
 var afi = require('./aif-file-info');
 
-afi.infoByFilename('test/Zeno-MutaraNebula_wSamples_MAS.aif', function(err, info){
-//afi.infoByFilename('test/M1F1-int24-AFsp.aif', function(err, info){
-  console.log(err,info);
-})
+var a = [
+  'test/brendabitches.aif',
+  'test/ableton.aif',
+  'test/ableton96.aif',
+
+]
+
+
+
+i=0;
+
+function go(){
+  console.log(i, a[i])
+  afi.infoByFilename(a[i], function(err, info){
+    console.log('>',info);
+    i++;
+    console.log('------')
+    if(i < a.length) go();
+  });
+}
+
+go();
