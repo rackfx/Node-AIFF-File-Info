@@ -1,4 +1,4 @@
-var afi = require('./aif-file-info');
+var afi = require('./aiff-file-info');
 
 var a = [
   'test/brendabitches.aif',

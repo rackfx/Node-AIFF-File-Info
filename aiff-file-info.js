@@ -2,7 +2,7 @@
 var buffertools = require('buffertools');
 var fs = require('fs');
 var afi = {};
-console.log('---')
+
 afi.infoByFilename = function(filename, cb){
   var stats = fs.statSync(filename);
   var buffer = new Buffer(160);
