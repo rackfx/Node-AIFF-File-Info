@@ -24,7 +24,7 @@
     "rate",
     "audio",
     "file",
-    "samplerate"
+    "samplerate",
     "bits per sample"
   ],
   "author": "David Jones <null@rackfx.com> (rackfx.com)",
