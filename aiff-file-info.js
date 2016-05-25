@@ -74,9 +74,9 @@ afi.infoByFilename = function(filename, cb){
          var error = false;
          var invalid_reasons = []
 
-         if(read_result.form_identifier != "FORM") invalid_reasons.push("Expected \"FORM\" string at 0")
-         if(read_result.aiff_identifier != "AIFF") invalid_reasons.push("Expected \"AIFF\" string")
-         if(read_result.comm_identifier != "COMM") invalid_reasons.push("Expected \"COMM\" string")
+         if((read_result.form_identifier != "FORM") invalid_reasons.push("Expected \"FORM\" string at 0")
+         if((read_result.aiff_identifier != "AIFF") && (read_result.aiff_identifier != "AIFC")) invalid_reasons.push("Expected \"AIFF\" or \"AIFC\" string")
+         if((read_result.comm_identifier != "COMM") && ((read_result.comm_identifier != "FVER")) invalid_reasons.push("Expected \"COMM\" or \"FVER\" string")
 
          if (invalid_reasons.length > 0) error = true;
 
