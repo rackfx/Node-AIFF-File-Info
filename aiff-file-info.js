@@ -18,6 +18,7 @@ afi.infoByFilename = function(filename, cb){
       ['comm_identifier', 'string', 4],
       ['chunk_length', 'uinteger', 4],
 
+
       ['num_channels', 'uinteger',2],
       ['num_sample_frames', 'uinteger', 4],
       ['bits_per_sample','uinteger',2],
@@ -34,9 +35,29 @@ afi.infoByFilename = function(filename, cb){
       var pointer = 0;
       //console.log(buffertools.indexOf(buffer,"ND",0))
       function read_aif(){
+
+
         var read = reads[i];
 
+
+
+
+
         i++;
+
+
+        if(i == 5){
+
+	        console.log(read_result['chunk_length']);
+
+          // the following handles AIFC file format...  Nice.
+	        if((read_result.aiff_identifier == "AIFC") && (read_result.comm_identifier == "FVER")){
+		        reads.splice(5, 0,       ['junk_length', 'long', 12]);
+		        console.log('...>', reads);
+
+	        }
+        }
+
         if(read[1]=='string'){
           read_result[read[0]] = buffer.toString('ascii', pointer , pointer + read[2]);
           pointer = pointer + read[2];   // pointer = pointer plus # bytes
@@ -53,6 +74,10 @@ afi.infoByFilename = function(filename, cb){
           read_result[read[0]] = buffer.toString('ascii', pointer , pointer + read[2]);
           pointer = pointer + read[2];
         }
+        else if(read[1]=="long"){
+	        read_result[read[0]] = buffer.readInt32LE(pointer, read[2])
+	        pointer = pointer + read[2];
+        }
         if(i < reads.length) { return read_aif()}
         else { return post_process(); }
 
@@ -61,6 +86,7 @@ afi.infoByFilename = function(filename, cb){
        read_aif();
 
        function post_process(){
+	       console.log(read_result.sample_rate1 ,read_result.sample_rate2, read_result.sample_rate3);
          var pad = read_result.sample_rate1 - 16398;
          var shifted = (read_result.sample_rate2<<8) + read_result.sample_rate3 ;
          read_result.sample_rate = shifted << pad;
