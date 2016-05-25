@@ -33,7 +33,7 @@ afi.infoByFilename = function(filename, cb){
     fs.read(fd,buffer,0,80,0,function(err,num){
       var i=0;
       var pointer = 0;
-      //console.log(buffertools.indexOf(buffer,"ND",0))
+      
       function read_aif(){
 
 
@@ -48,12 +48,12 @@ afi.infoByFilename = function(filename, cb){
 
         if(i == 5){
 
-	        console.log(read_result['chunk_length']);
+
 
           // the following handles AIFC file format...  Nice.
 	        if((read_result.aiff_identifier == "AIFC") && (read_result.comm_identifier == "FVER")){
 		        reads.splice(5, 0,       ['junk_length', 'long', 12]);
-		        console.log('...>', reads);
+
 
 	        }
         }
@@ -86,7 +86,7 @@ afi.infoByFilename = function(filename, cb){
        read_aif();
 
        function post_process(){
-	       console.log(read_result.sample_rate1 ,read_result.sample_rate2, read_result.sample_rate3);
+
          var pad = read_result.sample_rate1 - 16398;
          var shifted = (read_result.sample_rate2<<8) + read_result.sample_rate3 ;
          read_result.sample_rate = shifted << pad;
