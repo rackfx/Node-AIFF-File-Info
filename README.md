@@ -1,5 +1,5 @@
 # AIFF File Info for Node.JS
-#### A lightweight module that parses AIFF information data from a AIFF file into a Javascript Object. Basically retrieves file and header meta data information from a AIFF file.  Note that this module currently does not parse AIFC files
+#### A lightweight module that parses AIFF information data from a AIFF file into a Javascript Object. Basically retrieves file and header meta data information from a AIFF file. Now with support for AIFC files
 
 ### Used for:
 - Determining the validity of a .aif file
@@ -74,14 +74,14 @@ Duration is in seconds.  Stats come from Node raw fs.statSync() result.
 References:
 
 
- TODO: Deep scan [avg amplitude, max amplitude], fork for AIFC
+ TODO: Deep scan [avg amplitude, max amplitude]
 
 
 
 Resources used:
 AIFF (Audio Interchange File Format) / AIF file information helper
 
-
+http://www-mmsp.ece.mcgill.ca/documents/audioformats/aiff/Docs/AIFF-C.9.26.91.pdf
 https://cycling74.com/forums/topic/aiffs-80-bit-sample-rate-value/
 
 http://www.instructables.com/id/How-to-Read-aiff-Files-using-C/
