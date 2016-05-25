@@ -1,6 +1,6 @@
 {
   "name": "aiff-file-info",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "AIFF (Audio Interchange File Format) / AIFF file information helper",
   "main": "aiff-file-info.js",
   "scripts": {
